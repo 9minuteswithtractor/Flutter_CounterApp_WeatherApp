@@ -77,32 +77,54 @@ class HomePage extends StatelessWidget {
                         Color.fromRGBO(255, 255, 255, 1),
                       ]),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      '--->',
-                      style: TextStyle(
-                        fontSize: 22.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      splashFactory: InkSparkle.splashFactory,
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 40.0,
+                        width: 125.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: const Color.fromRGBO(70, 87, 121, 0.5),
+                        ),
+                        child: const Text(
+                          'Get Location',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
-                    const SizedBox(width: 15.0),
-                    BlocBuilder<CounterCubit, AppCubitStates>(
-                      builder: (context, state) {
-                        int value = state.counterValue;
-                        return Text(
-                          '$value',
-                          style: const TextStyle(
-                              fontSize: 27.0, color: Colors.green),
-                        );
-                      },
-                    ),
-                    const SizedBox(width: 15.0),
-                    const Text(
-                      '<---',
-                      style: TextStyle(
-                        fontSize: 22.0,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text(
+                          '--->',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                          ),
+                        ),
+                        const SizedBox(width: 15.0),
+                        BlocBuilder<CounterCubit, AppCubitStates>(
+                          builder: (context, state) {
+                            int value = state.counterValue;
+                            return Text(
+                              '$value',
+                              style: const TextStyle(
+                                  fontSize: 27.0, color: Colors.green),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 15.0),
+                        const Text(
+                          '<---',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
