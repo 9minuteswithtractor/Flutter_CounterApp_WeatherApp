@@ -43,8 +43,10 @@ class HomePage extends StatelessWidget {
         actions: const <Widget>[
           Padding(
             padding: EdgeInsets.fromLTRB(0, 8.0, 35.0, 8.0),
+            // TODO : create a InkWell ? => snackBar
             child: Icon(
               Icons.sunny,
+              size: 30.0,
               color: Color.fromRGBO(255, 144, 93, 1),
             ),
           ),
@@ -66,9 +68,15 @@ class HomePage extends StatelessWidget {
                 margin: EdgeInsets.zero,
                 padding: EdgeInsets.zero,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromRGBO(183, 189, 255, 1)),
-
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(183, 189, 255, 1),
+                        Color.fromRGBO(255, 255, 255, 1),
+                      ]),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
