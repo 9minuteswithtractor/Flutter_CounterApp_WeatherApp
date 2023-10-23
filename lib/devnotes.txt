@@ -1,0 +1,47 @@
+Just testing the need of this file here ...
+
+?  Why  => Because README.md is about the app ...
+? about => This would be notes/developer thoughts, vision future possibilities ( for others to read..
+          maybe someone could implement that vision or idea  )
+
+
+        lib/
+    ├── application/
+    │   ├── features/
+    │   │   ├── todos/
+    │   │   │   ├── cubit/
+    │   │   │   │   ├── todo_list_cubit.cubit.dart
+    │   │   │   │   └── todo_list_initial_state.dart
+    │   │   │   └── ...
+    │   │   │   └── ...
+    │   │   └── ...
+    │   └── states
+    │        ├── inital
+    │        │   └── cubit/
+    │        │      ├── app_cubit_states.dart           -> init class for states
+    │        │      ├── app_cubits.dart                 -> init class for cubit
+    │        │      └── app_cubit_logics.dart
+    │        ├── home
+    │        │   └── cubit/
+    │        │
+    │        └── signup
+    │            └── cubit/
+    │
+    │
+    ├── presentation/
+    │   ├── screens/
+    │   │   └── <screen_name>.dart
+    │   ├── widgets/
+    │   │   └── <widget_name>.dart
+    │   └── ...
+    │
+    ├── main.dart
+    │
+    ├── devnotes.txt
+    │
+    ├── common_exports.dart
+    │
+    └── pubspec.yaml
+
+
+//TODO : this file is safe to delete whenever needed ...
