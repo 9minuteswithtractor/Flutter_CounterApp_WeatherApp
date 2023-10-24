@@ -33,3 +33,7 @@ class RangeValues {
   int minValue = 0;
   int maxValue = 10;
 }
+
+class Location {
+  String defaultLocation = 'User location';
+}

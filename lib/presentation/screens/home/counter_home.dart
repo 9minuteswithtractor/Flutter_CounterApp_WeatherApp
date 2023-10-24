@@ -8,8 +8,9 @@ import '../../../application/cubit/app_cubit.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  void getLocation() {
-    print('Getting users Location ...');
+  void getLocation(state) {
+    String value = AppCubitStates.initial().location;
+    print(value);
   }
 
   void buttonPressed(state, context) {
@@ -85,22 +86,28 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        getLocation();
+                    BlocListener<CounterCubit, AppCubitStates>(
+                      listener: (context, state) {
+                        // TODO: implement listener
+                        final value = state.location;
                       },
-                      splashColor: Colors.white,
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 40.0,
-                        width: 125.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                          color: const Color.fromRGBO(70, 87, 121, 0.5),
-                        ),
-                        child: const Text(
-                          'Get Location',
-                          style: TextStyle(color: Colors.white),
+                      child: InkWell(
+                        onTap: () {
+                          getLocation(cubit.state);
+                        },
+                        splashColor: Colors.white,
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 40.0,
+                          width: 125.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: const Color.fromRGBO(70, 87, 121, 0.5),
+                          ),
+                          child: const Text(
+                            'Get Location',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
