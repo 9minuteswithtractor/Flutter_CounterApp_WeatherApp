@@ -20,6 +20,7 @@ mixin _$AppCubitStates {
   bool get wasReset => throw _privateConstructorUsedError;
   int get counterValue => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppCubitStatesCopyWith<AppCubitStates> get copyWith =>
@@ -33,7 +34,11 @@ abstract class $AppCubitStatesCopyWith<$Res> {
       _$AppCubitStatesCopyWithImpl<$Res, AppCubitStates>;
   @useResult
   $Res call(
-      {bool wasIncremented, bool wasReset, int counterValue, String location});
+      {bool wasIncremented,
+      bool wasReset,
+      int counterValue,
+      String location,
+      String message});
 }
 
 /// @nodoc
@@ -53,6 +58,7 @@ class _$AppCubitStatesCopyWithImpl<$Res, $Val extends AppCubitStates>
     Object? wasReset = null,
     Object? counterValue = null,
     Object? location = null,
+    Object? message = null,
   }) {
     return _then(_value.copyWith(
       wasIncremented: null == wasIncremented
@@ -71,6 +77,10 @@ class _$AppCubitStatesCopyWithImpl<$Res, $Val extends AppCubitStates>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -84,7 +94,11 @@ abstract class _$$AppCubitStatesImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool wasIncremented, bool wasReset, int counterValue, String location});
+      {bool wasIncremented,
+      bool wasReset,
+      int counterValue,
+      String location,
+      String message});
 }
 
 /// @nodoc
@@ -102,6 +116,7 @@ class __$$AppCubitStatesImplCopyWithImpl<$Res>
     Object? wasReset = null,
     Object? counterValue = null,
     Object? location = null,
+    Object? message = null,
   }) {
     return _then(_$AppCubitStatesImpl(
       wasIncremented: null == wasIncremented
@@ -120,6 +135,10 @@ class __$$AppCubitStatesImplCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -131,7 +150,8 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
       {required this.wasIncremented,
       required this.wasReset,
       required this.counterValue,
-      this.location = 'User Location'});
+      this.location = 'User Location',
+      this.message = 'Have a ☀️ day!'});
 
   @override
   final bool wasIncremented;
@@ -142,10 +162,13 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
   @override
   @JsonKey()
   final String location;
+  @override
+  @JsonKey()
+  final String message;
 
   @override
   String toString() {
-    return 'AppCubitStates(wasIncremented: $wasIncremented, wasReset: $wasReset, counterValue: $counterValue, location: $location)';
+    return 'AppCubitStates(wasIncremented: $wasIncremented, wasReset: $wasReset, counterValue: $counterValue, location: $location, message: $message)';
   }
 
   @override
@@ -160,12 +183,13 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
             (identical(other.counterValue, counterValue) ||
                 other.counterValue == counterValue) &&
             (identical(other.location, location) ||
-                other.location == location));
+                other.location == location) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, wasIncremented, wasReset, counterValue, location);
+      runtimeType, wasIncremented, wasReset, counterValue, location, message);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +204,8 @@ abstract class _AppCubitStates implements AppCubitStates {
       {required final bool wasIncremented,
       required final bool wasReset,
       required final int counterValue,
-      final String location}) = _$AppCubitStatesImpl;
+      final String location,
+      final String message}) = _$AppCubitStatesImpl;
 
   @override
   bool get wasIncremented;
@@ -190,6 +215,8 @@ abstract class _AppCubitStates implements AppCubitStates {
   int get counterValue;
   @override
   String get location;
+  @override
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$$AppCubitStatesImplCopyWith<_$AppCubitStatesImpl> get copyWith =>

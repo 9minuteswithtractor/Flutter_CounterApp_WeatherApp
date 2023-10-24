@@ -4,36 +4,22 @@ import 'package:freezed_and_cubit/application/cubit/app_cubit_states.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../../../application/cubit/app_cubit.dart';
+import '../../../application/features/controller_buttons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  void getLocation(state) {
-    String value = AppCubitStates.initial().location;
-    print(value);
-  }
+  void getLocation() async {
+    // String value = AppCubitStates.initial().location;
+    LocationPermission permissionStatus = await Geolocator.requestPermission();
 
-  void buttonPressed(state, context) {
-    if (state.wasReset == true && state.wasIncremented == false) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Value was reset ..'),
-          duration: Duration(milliseconds: 200),
-        ),
-      );
-    } else if (state.wasIncremented == true) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Incremented ..'),
-          duration: Duration(milliseconds: 200),
-        ),
-      );
-    } else if (state.wasIncremented == false) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Decremented ..'),
-        duration: Duration(milliseconds: 200),
-      ));
+    if (permissionStatus == LocationPermission.denied) {
+      print('The user denied permission to access their location.');
+      return;
     }
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low);
+    print(position);
   }
 
   @override
@@ -46,14 +32,30 @@ class HomePage extends StatelessWidget {
         title: const Text('The Counter App'),
         centerTitle: true,
         elevation: 4.0,
-        actions: const <Widget>[
+        actions: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 8.0, 35.0, 8.0),
+            padding: const EdgeInsets.fromLTRB(0, 8.0, 35.0, 8.0),
             // TODO : create a InkWell ? => snackBar
-            child: Icon(
-              Icons.sunny,
-              size: 30.0,
-              color: Color.fromRGBO(255, 144, 93, 1),
+            child: BlocListener<CounterCubit, AppCubitStates>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              child: InkWell(
+                onTap: () {
+                  final value = AppCubitStates.initial().message;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(value),
+                      duration: const Duration(milliseconds: 400),
+                    ),
+                  );
+                },
+                child: const Icon(
+                  Icons.sunny,
+                  size: 30.0,
+                  color: Color.fromRGBO(255, 144, 93, 1),
+                ),
+              ),
             ),
           ),
         ],
@@ -89,11 +91,10 @@ class HomePage extends StatelessWidget {
                     BlocListener<CounterCubit, AppCubitStates>(
                       listener: (context, state) {
                         // TODO: implement listener
-                        final value = state.location;
                       },
                       child: InkWell(
                         onTap: () {
-                          getLocation(cubit.state);
+                          getLocation();
                         },
                         splashColor: Colors.white,
                         child: Container(
