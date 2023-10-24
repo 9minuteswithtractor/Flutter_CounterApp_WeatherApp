@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_and_cubit/application/cubit/app_cubit_states.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../../../application/cubit/app_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+  void getLocation() {
+    print('Getting users Location ...');
+  }
 
   void buttonPressed(state, context) {
     if (state.wasReset == true && state.wasIncremented == false) {
@@ -37,7 +42,7 @@ class HomePage extends StatelessWidget {
     ////////////////////////////////////////////////
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Multi App'),
+        title: const Text('The Counter App'),
         centerTitle: true,
         elevation: 4.0,
         actions: const <Widget>[
@@ -81,8 +86,10 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     InkWell(
-                      onTap: () {},
-                      splashFactory: InkSparkle.splashFactory,
+                      onTap: () {
+                        getLocation();
+                      },
+                      splashColor: Colors.white,
                       child: Container(
                         alignment: Alignment.center,
                         height: 40.0,
