@@ -105,7 +105,13 @@ class HomePage extends StatelessWidget {
                     BlocBuilder<CounterCubit, AppCubitStates>(
                         builder: (context, state) {
                       String textValue = state.location;
-                      return Text(textValue);
+                      return Text(
+                        textValue,
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.indigo,
+                        ),
+                      );
                     }),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

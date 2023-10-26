@@ -150,7 +150,7 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
       {required this.wasIncremented,
       required this.wasReset,
       required this.counterValue,
-      this.location = 'Default Location',
+      this.location = 'HardcodedInitialFreezed :\n- Riga, Latvia +22 °C 🌤️',
       this.message = 'Have a ☀️ day!'});
 
   @override

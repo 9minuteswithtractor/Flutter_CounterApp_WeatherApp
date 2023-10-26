@@ -5,9 +5,13 @@ import '../../data/dataproviders/goelocator.dart';
 import 'app_cubit_states.dart';
 
 class CounterCubit extends Cubit<AppCubitStates> {
+  String data = LocationProvider().data;
   CounterCubit()
       : super(const AppCubitStates(
-            counterValue: 0, wasIncremented: false, wasReset: false));
+            counterValue: 0,
+            wasIncremented: false,
+            wasReset: false,
+            location: 'HardCodedInitialCubit:\n- Riga, Latvia +22 °C 🌤️'));
 
   void incrementValue() {
     if (state.counterValue < RangeValues().maxValue) {
