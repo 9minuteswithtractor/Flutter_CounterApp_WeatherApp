@@ -16,8 +16,5 @@ class AppCubitStates with _$AppCubitStates {
     @Default('Have a ☀️ day!') String message,
   }) = _AppCubitStates;
   factory AppCubitStates.initial() => const AppCubitStates(
-      counterValue: 0,
-      wasIncremented: false,
-      wasReset: false,
-      location: 'string');
+      counterValue: 0, wasIncremented: false, wasReset: false, location: '');
 }

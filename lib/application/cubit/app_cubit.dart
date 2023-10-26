@@ -34,8 +34,8 @@ class CounterCubit extends Cubit<AppCubitStates> {
   void resetValue() => emit(const AppCubitStates(
       counterValue: 0, wasIncremented: false, wasReset: true));
 
-  void getLocation() => emit(AppCubitStates(
-        location: LocationProvider().data,
+  Future getLocation() async => emit(AppCubitStates(
+        location: await LocationProvider().data,
         wasIncremented: false,
         wasReset: false,
         counterValue: state.counterValue,

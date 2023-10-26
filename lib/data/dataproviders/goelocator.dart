@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 
 Future locationProvider() async {
@@ -10,6 +11,6 @@ Future locationProvider() async {
   }
   Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.low);
-  print(position);
+  print(position as String?);
   return (position);
 }

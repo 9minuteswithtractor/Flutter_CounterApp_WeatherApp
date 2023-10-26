@@ -88,11 +88,8 @@ class HomePage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(6.0),
                           ),
                         ),
-                        onPressed: () {
-                          // TODO: Need to extract this method ...
-                          // void getData = cubit.getLocation();
-                          // getData = locationProvider();
-                          cubit.getLocation();
+                        onPressed: () async {
+                          await cubit.getLocation();
                           ////////////////////////////////////////////
                           print(cubit.state.location);
                         },
