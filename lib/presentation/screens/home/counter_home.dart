@@ -5,33 +5,23 @@ import 'package:geolocator/geolocator.dart';
 
 import '../../../application/cubit/app_cubit.dart';
 import '../../../application/features/controller_buttons.dart';
+import '../../../data/dataproviders/goelocator.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  void getLocation() async {
-    // String value = AppCubitStates.initial().location;
-    LocationPermission permissionStatus = await Geolocator.requestPermission();
-
-    if (permissionStatus == LocationPermission.denied) {
-      print('The user denied permission to access their location.');
-      return;
-    }
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
-    print(position);
-  }
 
   @override
   Widget build(BuildContext context) {
     // this is how we can access cubit /////////////
     final cubit = context.read<CounterCubit>();
     ////////////////////////////////////////////////
+    // String defaultLocationVal = AppCubitStates.initial().message;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('The Counter App'),
         centerTitle: true,
-        elevation: 4.0,
+        // elevation: 4.0,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 8.0, 35.0, 8.0),
@@ -92,26 +82,30 @@ class HomePage extends StatelessWidget {
                       listener: (context, state) {
                         // TODO: implement listener
                       },
-                      child: InkWell(
-                        onTap: () {
-                          getLocation();
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                          ),
+                        ),
+                        onPressed: () {
+                          // TODO: Need to extract this method ...
+                          void getData = cubit.getLocation();
+                          getData = locationProvider();
+                          ////////////////////////////////////////////
+                          print(cubit.state.location);
                         },
-                        splashColor: Colors.white,
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: 40.0,
-                          width: 125.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                            color: const Color.fromRGBO(70, 87, 121, 0.5),
-                          ),
-                          child: const Text(
-                            'Get Location',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                        child: const Text(
+                          'Get Location',
+                          style: TextStyle(color: Colors.blueAccent),
                         ),
                       ),
                     ),
+                    BlocBuilder<CounterCubit, AppCubitStates>(
+                        builder: (context, state) {
+                      String textValue = state.location;
+                      return Text(textValue);
+                    }),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

@@ -150,7 +150,7 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
       {required this.wasIncremented,
       required this.wasReset,
       required this.counterValue,
-      this.location = 'User Location',
+      this.location = 'Default Location',
       this.message = 'Have a ☀️ day!'});
 
   @override

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_cubit_states.freezed.dart';
@@ -10,7 +11,7 @@ class AppCubitStates with _$AppCubitStates {
     required bool wasIncremented,
     required bool wasReset,
     required int counterValue,
-    @Default('User Location') String location,
+    @Default('Default Location') String location,
     @Default('Have a ☀️ day!') String message,
   }) = _AppCubitStates;
   factory AppCubitStates.initial() => const AppCubitStates(
