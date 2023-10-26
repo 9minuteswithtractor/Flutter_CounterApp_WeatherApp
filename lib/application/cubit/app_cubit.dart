@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../../data/dataproviders/goelocator.dart';
 import 'app_cubit_states.dart';
 
 class CounterCubit extends Cubit<AppCubitStates> {
@@ -30,7 +31,7 @@ class CounterCubit extends Cubit<AppCubitStates> {
       counterValue: 0, wasIncremented: false, wasReset: true));
 
   void getLocation() => emit(AppCubitStates(
-        location: 'Users  location',
+        location: LocationProvider().data,
         wasIncremented: false,
         wasReset: false,
         counterValue: state.counterValue,
@@ -42,4 +43,6 @@ class RangeValues {
   int maxValue = 10;
 }
 
-class LocationProvider {}
+class LocationProvider {
+  String data = locationProvider().toString();
+}

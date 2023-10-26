@@ -90,8 +90,9 @@ class HomePage extends StatelessWidget {
                         ),
                         onPressed: () {
                           // TODO: Need to extract this method ...
-                          void getData = cubit.getLocation();
-                          getData = locationProvider();
+                          // void getData = cubit.getLocation();
+                          // getData = locationProvider();
+                          cubit.getLocation();
                           ////////////////////////////////////////////
                           print(cubit.state.location);
                         },
