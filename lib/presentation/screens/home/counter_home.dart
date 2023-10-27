@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_and_cubit/application/cubit/app_cubit_states.dart';
+import 'package:freezed_and_cubit/data/dataproviders/dio_data_provider.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../../../application/cubit/app_cubit.dart';
@@ -99,17 +100,37 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    BlocBuilder<CounterCubit, AppCubitStates>(
-                        builder: (context, state) {
-                      String textValue = state.location;
-                      return Text(
-                        textValue,
-                        style: TextStyle(
-                          fontSize: 24.0,
-                          color: Colors.indigo,
+                    Column(
+                      children: [
+                        const Text(
+                          'Location:',
+                          style: TextStyle(
+                            fontSize: 26.0,
+                            color: Colors.white,
+                          ),
                         ),
-                      );
-                    }),
+                        BlocBuilder<CounterCubit, AppCubitStates>(
+                            builder: (context, state) {
+                          String textValue = state.location;
+                          return Text(
+                            textValue,
+                            style: const TextStyle(
+                              fontSize: 22.0,
+                              color: Colors.indigo,
+                            ),
+                          );
+                        }),
+                        const Text(
+                          'Weather:\n🌤️ +22 *c',
+                          style: TextStyle(
+                            fontSize: 26.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        // TODO: WEATHER-API
+                        // Text(data),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

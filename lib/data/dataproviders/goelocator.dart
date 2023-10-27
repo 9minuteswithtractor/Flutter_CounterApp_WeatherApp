@@ -19,7 +19,7 @@ class LocationProvider {
 
     latitude = position.latitude;
     longitude = position.longitude;
-    String usersLocation = 'alt: $latitude, lat: $longitude';
+    String usersLocation = 'lat: $latitude, lat: $longitude';
     print(position);
     return (usersLocation);
   }

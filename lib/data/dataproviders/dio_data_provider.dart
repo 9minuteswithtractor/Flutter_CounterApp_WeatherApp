@@ -1,37 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:freezed_and_cubit/data/dataproviders/goelocator.dart';
+import 'package:freezed_and_cubit/data/dataproviders/env.dart';
 
-import '../models/weather_model.dart';
-import 'package:dio/dio.dart';
+class WeatherApi {
+  final dio = Dio();
+  final String API_KEY = weatherAPI;
 
-// class WeatherApiClient {
-//   Future<WeatherModel> request() async {
-//     Response response = await Dio().get()
-//   }
-// }
-
-// void main() async {
-//   final dio = Dio();
-//
-//   // dio.options.headers = {
-//   //   'accept': 'application/json',
-//   //   'X-RapidAPI-Key': '',
-//   //   'X-RapidAPI-Host': 'https://catfact.ninja/fact'
-//   // };
-//
-//   try {
-//     final response = await dio.get('https://catfact.ninja/fact');
-//
-//     // Print the response.
-//     print(response.data);
-//   } on DioError catch (error) {
-//     // Handle the error.
-//     print(error.message);
-//   }
-//   // void getHttp() async {
-//   //   final response = await dio.get(
-//   //       'https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random');
-//   //   print(response);
-//   // }
-//   //
-//   // getHttp();
-// }
+  Future getHttp() async {
+    final response = await dio.get(
+        'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=$API_KEY');
+    print(response);
+    getHttp();
+    return response;
+  }
+}
