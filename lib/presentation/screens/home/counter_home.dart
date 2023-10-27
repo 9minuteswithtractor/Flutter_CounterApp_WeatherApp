@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // this is how we can access cubit /////////////
     final cubit = context.read<CounterCubit>();
+    String data = WeatherApi().getHttp().toString();
 
     ////////////////////////////////////////////////
     // String defaultLocationVal = AppCubitStates.initial().message;
@@ -128,7 +129,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         // TODO: WEATHER-API
-                        // Text(data),
+                        Text(data),
                       ],
                     ),
                     Row(
