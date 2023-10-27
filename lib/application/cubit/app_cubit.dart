@@ -5,7 +5,6 @@ import '../../data/dataproviders/goelocator.dart';
 import 'app_cubit_states.dart';
 
 class CounterCubit extends Cubit<AppCubitStates> {
-  String data = LocationProvider().data;
   CounterCubit()
       : super(const AppCubitStates(
             counterValue: 0,
@@ -35,7 +34,7 @@ class CounterCubit extends Cubit<AppCubitStates> {
       counterValue: 0, wasIncremented: false, wasReset: true));
 
   Future getLocation() async => emit(AppCubitStates(
-        location: await LocationProvider().data,
+        location: await LocationProvider().getCurrentLocation(),
         wasIncremented: false,
         wasReset: false,
         counterValue: state.counterValue,
@@ -47,6 +46,4 @@ class RangeValues {
   int maxValue = 10;
 }
 
-class LocationProvider {
-  String data = locationProvider().toString();
-}
+// String data = locationProvider().toString();

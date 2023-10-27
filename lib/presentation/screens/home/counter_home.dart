@@ -14,10 +14,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // this is how we can access cubit /////////////
     final cubit = context.read<CounterCubit>();
+
     ////////////////////////////////////////////////
     // String defaultLocationVal = AppCubitStates.initial().message;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('The Counter App'),
         centerTitle: true,
@@ -90,8 +92,6 @@ class HomePage extends StatelessWidget {
                         ),
                         onPressed: () async {
                           await cubit.getLocation();
-                          ////////////////////////////////////////////
-                          print(cubit.state.location);
                         },
                         child: const Text(
                           'Get Location',

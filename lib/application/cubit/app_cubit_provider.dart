@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../presentation/screens/home/counter_home.dart';
 import 'app_cubit.dart';
 
-class CubitFreezedDemo extends StatelessWidget {
-  const CubitFreezedDemo({super.key});
+class TheCounterApp extends StatelessWidget {
+  const TheCounterApp({super.key});
 
   @override
   Widget build(BuildContext context) {

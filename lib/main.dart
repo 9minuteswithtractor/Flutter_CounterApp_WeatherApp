@@ -3,6 +3,6 @@ import 'application/cubit/app_cubit_provider.dart';
 
 void main() {
   runApp(
-    const CubitFreezedDemo(),
+    const TheCounterApp(),
   );
 }
