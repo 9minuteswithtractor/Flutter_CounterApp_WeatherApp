@@ -9,7 +9,7 @@ class WeatherApi {
 
   Future getHttp() async {
     final response = await dio.get(
-        'https://api.open-meteo.com/v1/forecast?latitude=56.9241&longitude=24.3833&hourly=temperature_2m&forecast_days=1');
+        'https://api.open-meteo.com/v1/forecast?latitude=56.91&longitude=24.38&current_weather=true');
 
     if (response.statusCode == 200) {
       try {
