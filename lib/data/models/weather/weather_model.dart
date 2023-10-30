@@ -5,11 +5,10 @@ part 'weather_model.g.dart';
 
 @freezed
 class WeatherModel with _$WeatherModel {
-  factory WeatherModel({
-    required String city,
+  const WeatherModel._();
+  const factory WeatherModel({
     required double temperature,
-    required double windspeed,
-    required bool is_day,
+    required bool currentWeather,
   }) = _WeatherModel;
   factory WeatherModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherModelFromJson(json);

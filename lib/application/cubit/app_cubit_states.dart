@@ -12,13 +12,16 @@ class AppCubitStates with _$AppCubitStates {
     required bool wasIncremented,
     required bool wasReset,
     required int counterValue,
-    @Default('HardcodedInitialFreezed :\n- Riga, Latvia +22 °C 🌤️')
-    String location,
+    @Default(' *t') String temperature,
+    @Default('') String location,
     @Default('Have a ☀️ day!') String message,
     @Default('') String city,
-    @Default('') String temperature,
   }) = _AppCubitStates;
 
   factory AppCubitStates.initial() => const AppCubitStates(
-      counterValue: 0, wasIncremented: false, wasReset: false, location: '');
+      counterValue: 0,
+      wasIncremented: false,
+      wasReset: false,
+      location: '',
+      temperature: '');
 }

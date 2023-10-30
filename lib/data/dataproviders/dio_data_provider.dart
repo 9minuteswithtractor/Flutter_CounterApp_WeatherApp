@@ -1,24 +1,34 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:freezed_and_cubit/data/dataproviders/env.dart';
 import 'package:freezed_and_cubit/data/dataproviders/goelocator.dart';
+import 'package:freezed_and_cubit/data/models/weather/weather_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class WeatherApi {
+class WeatherApiClient {
   final dio = Dio();
-
-  String data = LocationProvider().getCurrentLocation().toString();
+  String url =
+      'https://api.open-meteo.com/v1/forecast?latitude=56.91&longitude=24.38&current_weather=true';
 
   Future getHttp() async {
-    final response = await dio.get(
-        'https://api.open-meteo.com/v1/forecast?latitude=56.91&longitude=24.38&current_weather=true');
+    Response response = await dio.get(url);
 
     if (response.statusCode == 200) {
-      try {
-        print('code: ${response.statusCode} OK');
-        print('data: ${response.data}');
-        return response.data;
-      } catch (e) {
-        throw ' err: Looks like this page is not accessible at the moment ...';
-      }
+      final parsedData = await jsonDecode(response.data.toString());
+
+      final weather = WeatherModel.fromJson(parsedData);
+      print(weather);
+      return (weather);
+      // final weather = await response.data;
+      // final temperature = await weather['current_weather']['temperature'];
+      // print(temperature.toString());
+      // return (temperature.toString());
+      // var temperature = jsonDecode(data)['current_weather']['temperature'];
+      // var temperature = response.data['current_weather']['temperature'];
+      // print('code: ${response.statusCode} OK');
+      // print('data: $temperature');
+      // return (temperature.toString());
     } else {
       print(response.statusCode);
     }

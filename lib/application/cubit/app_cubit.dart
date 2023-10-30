@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:freezed_and_cubit/data/dataproviders/dio_data_provider.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../../data/dataproviders/goelocator.dart';
@@ -6,11 +7,15 @@ import 'app_cubit_states.dart';
 
 class CounterCubit extends Cubit<AppCubitStates> {
   CounterCubit()
-      : super(const AppCubitStates(
+      : super(
+          const AppCubitStates(
             counterValue: 0,
             wasIncremented: false,
             wasReset: false,
-            location: 'HardCodedInitialCubit:\n- Riga, Latvia +22 °C 🌤️'));
+            location: 'LOCATION',
+            temperature: 'TEMPERATURE',
+          ),
+        );
 
   void incrementValue() {
     if (state.counterValue < RangeValues().maxValue) {
@@ -30,15 +35,31 @@ class CounterCubit extends Cubit<AppCubitStates> {
     }
   }
 
-  void resetValue() => emit(const AppCubitStates(
-      counterValue: 0, wasIncremented: false, wasReset: true));
+  void resetValue() => emit(
+        AppCubitStates(
+          counterValue: 0,
+          wasIncremented: false,
+          wasReset: true,
+          temperature: state.temperature,
+          location: state.location,
+        ),
+      );
 
   Future getLocation() async => emit(AppCubitStates(
         location: await LocationProvider().getCurrentLocation(),
-        wasIncremented: false,
-        wasReset: false,
+        wasIncremented: state.wasIncremented,
+        wasReset: state.wasReset,
         counterValue: state.counterValue,
       ));
+
+  Future getWeather() async => emit(
+        AppCubitStates(
+          temperature: await WeatherApiClient().getHttp(),
+          wasIncremented: false,
+          wasReset: false,
+          counterValue: state.counterValue,
+        ),
+      );
 }
 
 class RangeValues {

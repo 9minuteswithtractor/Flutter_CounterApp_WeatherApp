@@ -20,10 +20,8 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherModel {
-  String get city => throw _privateConstructorUsedError;
   double get temperature => throw _privateConstructorUsedError;
-  double get windspeed => throw _privateConstructorUsedError;
-  bool get is_day => throw _privateConstructorUsedError;
+  bool get currentWeather => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +35,7 @@ abstract class $WeatherModelCopyWith<$Res> {
           WeatherModel value, $Res Function(WeatherModel) then) =
       _$WeatherModelCopyWithImpl<$Res, WeatherModel>;
   @useResult
-  $Res call({String city, double temperature, double windspeed, bool is_day});
+  $Res call({double temperature, bool currentWeather});
 }
 
 /// @nodoc
@@ -53,27 +51,17 @@ class _$WeatherModelCopyWithImpl<$Res, $Val extends WeatherModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? city = null,
     Object? temperature = null,
-    Object? windspeed = null,
-    Object? is_day = null,
+    Object? currentWeather = null,
   }) {
     return _then(_value.copyWith(
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
       temperature: null == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as double,
-      windspeed: null == windspeed
-          ? _value.windspeed
-          : windspeed // ignore: cast_nullable_to_non_nullable
-              as double,
-      is_day: null == is_day
-          ? _value.is_day
-          : is_day // ignore: cast_nullable_to_non_nullable
+      currentWeather: null == currentWeather
+          ? _value.currentWeather
+          : currentWeather // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -87,7 +75,7 @@ abstract class _$$WeatherModelImplCopyWith<$Res>
       __$$WeatherModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String city, double temperature, double windspeed, bool is_day});
+  $Res call({double temperature, bool currentWeather});
 }
 
 /// @nodoc
@@ -101,27 +89,17 @@ class __$$WeatherModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? city = null,
     Object? temperature = null,
-    Object? windspeed = null,
-    Object? is_day = null,
+    Object? currentWeather = null,
   }) {
     return _then(_$WeatherModelImpl(
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
       temperature: null == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as double,
-      windspeed: null == windspeed
-          ? _value.windspeed
-          : windspeed // ignore: cast_nullable_to_non_nullable
-              as double,
-      is_day: null == is_day
-          ? _value.is_day
-          : is_day // ignore: cast_nullable_to_non_nullable
+      currentWeather: null == currentWeather
+          ? _value.currentWeather
+          : currentWeather // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -129,28 +107,22 @@ class __$$WeatherModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$WeatherModelImpl implements _WeatherModel {
-  _$WeatherModelImpl(
-      {required this.city,
-      required this.temperature,
-      required this.windspeed,
-      required this.is_day});
+class _$WeatherModelImpl extends _WeatherModel {
+  const _$WeatherModelImpl(
+      {required this.temperature, required this.currentWeather})
+      : super._();
 
   factory _$WeatherModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeatherModelImplFromJson(json);
 
   @override
-  final String city;
-  @override
   final double temperature;
   @override
-  final double windspeed;
-  @override
-  final bool is_day;
+  final bool currentWeather;
 
   @override
   String toString() {
-    return 'WeatherModel(city: $city, temperature: $temperature, windspeed: $windspeed, is_day: $is_day)';
+    return 'WeatherModel(temperature: $temperature, currentWeather: $currentWeather)';
   }
 
   @override
@@ -158,18 +130,15 @@ class _$WeatherModelImpl implements _WeatherModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WeatherModelImpl &&
-            (identical(other.city, city) || other.city == city) &&
             (identical(other.temperature, temperature) ||
                 other.temperature == temperature) &&
-            (identical(other.windspeed, windspeed) ||
-                other.windspeed == windspeed) &&
-            (identical(other.is_day, is_day) || other.is_day == is_day));
+            (identical(other.currentWeather, currentWeather) ||
+                other.currentWeather == currentWeather));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, city, temperature, windspeed, is_day);
+  int get hashCode => Object.hash(runtimeType, temperature, currentWeather);
 
   @JsonKey(ignore: true)
   @override
@@ -185,24 +154,19 @@ class _$WeatherModelImpl implements _WeatherModel {
   }
 }
 
-abstract class _WeatherModel implements WeatherModel {
-  factory _WeatherModel(
-      {required final String city,
-      required final double temperature,
-      required final double windspeed,
-      required final bool is_day}) = _$WeatherModelImpl;
+abstract class _WeatherModel extends WeatherModel {
+  const factory _WeatherModel(
+      {required final double temperature,
+      required final bool currentWeather}) = _$WeatherModelImpl;
+  const _WeatherModel._() : super._();
 
   factory _WeatherModel.fromJson(Map<String, dynamic> json) =
       _$WeatherModelImpl.fromJson;
 
   @override
-  String get city;
-  @override
   double get temperature;
   @override
-  double get windspeed;
-  @override
-  bool get is_day;
+  bool get currentWeather;
   @override
   @JsonKey(ignore: true)
   _$$WeatherModelImplCopyWith<_$WeatherModelImpl> get copyWith =>

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_and_cubit/application/cubit/app_cubit_states.dart';
-import 'package:freezed_and_cubit/data/dataproviders/dio_data_provider.dart';
+import 'package:freezed_and_cubit/data/dataproviders/goelocator.dart';
+import 'package:geocoding/geocoding.dart';
+
 import 'package:geolocator/geolocator.dart';
 
 import '../../../application/cubit/app_cubit.dart';
 import '../../../application/features/controller_buttons.dart';
-import '../../../data/dataproviders/goelocator.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,10 +16,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // this is how we can access cubit /////////////
     final cubit = context.read<CounterCubit>();
-    String data = WeatherApi().getHttp().toString();
+
+    String location = cubit.state.location;
+    String temperature = cubit.state.temperature;
 
     ////////////////////////////////////////////////
-    // String defaultLocationVal = AppCubitStates.initial().message;
+    // String defaultLocationVal = AppCubitStates.initsial().message;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -82,24 +85,24 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    BlocListener<CounterCubit, AppCubitStates>(
-                      listener: (context, state) {
-                        // TODO: implement listener
-                      },
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6.0),
+                    BlocBuilder<CounterCubit, AppCubitStates>(
+                      builder: (context, state) {
+                        return ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
                           ),
-                        ),
-                        onPressed: () async {
-                          await cubit.getLocation();
-                        },
-                        child: const Text(
-                          'Get Location',
-                          style: TextStyle(color: Colors.blueAccent),
-                        ),
-                      ),
+                          onPressed: () async {
+                            await cubit.getLocation();
+                            await cubit.getWeather();
+                          },
+                          child: const Text(
+                            'Get Location',
+                            style: TextStyle(color: Colors.blueAccent),
+                          ),
+                        );
+                      },
                     ),
                     Column(
                       children: [
@@ -112,24 +115,36 @@ class HomePage extends StatelessWidget {
                         ),
                         BlocBuilder<CounterCubit, AppCubitStates>(
                             builder: (context, state) {
-                          String textValue = state.location;
+                          String locationValue = state.location;
                           return Text(
-                            textValue,
+                            locationValue,
                             style: const TextStyle(
                               fontSize: 22.0,
                               color: Colors.indigo,
                             ),
                           );
                         }),
+
+                        // TODO: WEATHER-API
                         const Text(
-                          'Weather:\n🌤️ +22 *c',
+                          'Temperature:',
                           style: TextStyle(
                             fontSize: 26.0,
                             color: Colors.white,
                           ),
                         ),
-                        // TODO: WEATHER-API
-                        Text(data),
+                        BlocBuilder<CounterCubit, AppCubitStates>(
+                          builder: (context, state) {
+                            String temperatureValue = state.temperature;
+                            return Text(
+                              temperatureValue,
+                              style: const TextStyle(
+                                fontSize: 22.0,
+                                color: Colors.indigo,
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                     Row(
