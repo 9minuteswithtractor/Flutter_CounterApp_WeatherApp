@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:freezed_and_cubit/data/dataproviders/env.dart';
 import 'package:freezed_and_cubit/data/dataproviders/goelocator.dart';
-import 'package:freezed_and_cubit/data/models/weather/weather_model.dart';
+
 import 'package:json_annotation/json_annotation.dart';
 
 class WeatherApiClient {
@@ -15,11 +15,12 @@ class WeatherApiClient {
     Response response = await dio.get(url);
 
     if (response.statusCode == 200) {
-      final parsedData = await jsonDecode(response.data.toString());
-
-      final weather = WeatherModel.fromJson(parsedData);
+      // TODO: NEEDS TO BE REFACTORED ////////////////////////////////
+      final parsedData = await jsonEncode(response.data.toString());
+      final weather = parsedData;
+      ////////////////////////////////////////////////////////////////
       print(weather);
-      return (weather);
+
       // final weather = await response.data;
       // final temperature = await weather['current_weather']['temperature'];
       // print(temperature.toString());
