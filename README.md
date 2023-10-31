@@ -13,6 +13,9 @@ A new Flutter project.
 
 ## main takeaways: 
 
-- [x] Clean start-new-Project tree according to Bard and 9mwt customizations 🌲
+- [x] Practice LocationServices with geolocator pkg,
+- [x] http with dio pkg,
+- [x]  practice json serialization / deserialization with freezed pkg. 🌲
+
 
         
