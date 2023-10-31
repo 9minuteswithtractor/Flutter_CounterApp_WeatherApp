@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:freezed_and_cubit/data/dataproviders/env.dart';
-import 'package:freezed_and_cubit/data/dataproviders/goelocator.dart';
-import 'package:freezed_and_cubit/data/models/weather/weather_model.dart';
+import 'package:the_counter_app/data/dataproviders/goelocator.dart';
+import 'package:the_counter_app/data/models/weather/weather_model.dart';
 
 import 'package:json_annotation/json_annotation.dart';
 

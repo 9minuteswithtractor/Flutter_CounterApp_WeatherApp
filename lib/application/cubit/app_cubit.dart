@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:freezed_and_cubit/data/dataproviders/dio_data_provider.dart';
+import 'package:the_counter_app/data/dataproviders/dio_data_provider.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../../data/dataproviders/goelocator.dart';

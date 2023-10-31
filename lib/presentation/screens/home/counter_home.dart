@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_and_cubit/application/cubit/app_cubit_states.dart';
-import 'package:freezed_and_cubit/data/dataproviders/goelocator.dart';
-import 'package:geocoding/geocoding.dart';
-
-import 'package:geolocator/geolocator.dart';
+import 'package:the_counter_app/application/cubit/app_cubit_states.dart';
 
 import '../../../application/cubit/app_cubit.dart';
 import '../../../application/features/controller_buttons.dart';

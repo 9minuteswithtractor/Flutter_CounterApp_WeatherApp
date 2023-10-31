@@ -1,4 +1,3 @@
-import 'package:freezed_and_cubit/data/models/location/location_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'weather_model.freezed.dart';
