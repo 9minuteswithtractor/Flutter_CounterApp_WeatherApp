@@ -12,7 +12,6 @@ class CounterCubit extends Cubit<AppCubitStates> {
             counterValue: 0,
             wasIncremented: false,
             wasReset: false,
-            // location: LocationProvider().getCurrentLocation().toString() => promise
             location: 'LOCATION',
             temperature: 'WEATHER',
           ),
@@ -21,43 +20,28 @@ class CounterCubit extends Cubit<AppCubitStates> {
   }
 
   void incrementValue() {
-    if (state.counterValue < RangeValues().maxValue) {
-      return emit(AppCubitStates(
-          counterValue: state.counterValue + 1,
-          wasIncremented: true,
-          wasReset: false));
+    if (state.counterValue < 10) {
+      return emit(
+        state.copyWith(counterValue: state.counterValue + 1),
+      );
     }
   }
 
   void decrementValue() {
-    if (state.counterValue > RangeValues().minValue) {
-      return emit(AppCubitStates(
-          counterValue: state.counterValue - 1,
-          wasIncremented: false,
-          wasReset: false));
+    if (state.counterValue > 1) {
+      return emit(
+        state.copyWith(counterValue: state.counterValue - 1),
+      );
     }
   }
 
-  void resetValue() => emit(
-        AppCubitStates(
-          counterValue: 0,
-          wasIncremented: false,
-          wasReset: true,
-          temperature: state.temperature,
-          location: state.location,
-        ),
-      );
+  void resetValue() => emit(state.copyWith(counterValue: 0));
 
   Future getLocation() async => emit(
       state.copyWith(location: await LocationProvider().getCurrentLocation()));
 
   Future getWeather() async =>
       emit(state.copyWith(temperature: await WeatherApiClient().getHttp()));
-}
-
-class RangeValues {
-  int minValue = 0;
-  int maxValue = 10;
 }
 
 // String data = locationProvider().toString();
