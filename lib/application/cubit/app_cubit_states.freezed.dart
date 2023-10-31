@@ -176,8 +176,8 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
       {required this.wasIncremented,
       required this.wasReset,
       required this.counterValue,
-      this.temperature = ' *t',
-      this.location = '',
+      this.temperature = 'press get_location',
+      this.location = 'press get_location',
       this.message = 'Have a ☀️ day!',
       this.city = ''});
 

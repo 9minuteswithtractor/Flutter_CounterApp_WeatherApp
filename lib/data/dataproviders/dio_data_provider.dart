@@ -8,18 +8,20 @@ import 'package:json_annotation/json_annotation.dart';
 
 class WeatherApiClient {
   final dio = Dio();
+  // 1) Fetching latitude and longitude
+
   String url =
-      'https://api.open-meteo.com/v1/forecast?latitude=56.91&longitude=24.38&current_weather=true';
+      'https://api.open-meteo.com/v1/forecast?latitude=23&longitude=23&current_weather=true';
 
   Future getHttp() async {
     Response response = await dio.get(url);
 
     if (response.statusCode == 200) {
       // TODO: NEEDS TO BE REFACTORED ////////////////////////////////
-      final parsedData = await jsonEncode(response.data.toString());
-      final weather = parsedData;
+
       ////////////////////////////////////////////////////////////////
-      print(weather);
+
+      // 2) Fetching latitude and longitude
 
       // final weather = await response.data;
       // final temperature = await weather['current_weather']['temperature'];

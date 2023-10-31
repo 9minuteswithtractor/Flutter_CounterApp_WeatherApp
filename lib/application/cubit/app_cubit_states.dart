@@ -12,8 +12,8 @@ class AppCubitStates with _$AppCubitStates {
     required bool wasIncremented,
     required bool wasReset,
     required int counterValue,
-    @Default(' *t') String temperature,
-    @Default('') String location,
+    @Default('press get_location') String temperature,
+    @Default('press get_location') String location,
     @Default('Have a ☀️ day!') String message,
     @Default('') String city,
   }) = _AppCubitStates;
