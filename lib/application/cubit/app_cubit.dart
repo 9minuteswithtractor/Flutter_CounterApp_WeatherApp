@@ -48,21 +48,11 @@ class CounterCubit extends Cubit<AppCubitStates> {
         ),
       );
 
-  Future getLocation() async => emit(AppCubitStates(
-        location: await LocationProvider().getCurrentLocation(),
-        wasIncremented: state.wasIncremented,
-        wasReset: state.wasReset,
-        counterValue: state.counterValue,
-      ));
+  Future getLocation() async => emit(
+      state.copyWith(location: await LocationProvider().getCurrentLocation()));
 
-  Future getWeather() async => emit(
-        AppCubitStates(
-          temperature: await WeatherApiClient().getHttp(),
-          wasIncremented: false,
-          wasReset: false,
-          counterValue: state.counterValue,
-        ),
-      );
+  Future getWeather() async =>
+      emit(state.copyWith(temperature: await WeatherApiClient().getHttp()));
 }
 
 class RangeValues {

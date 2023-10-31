@@ -23,18 +23,17 @@ class WeatherApiClient {
     Response response = await dio.get(url);
 
     if (response.statusCode == 200) {
-      // TODO: NEEDS TO BE REFACTORED ////////////////////////////////
-
       CurrentWeather apiResponse = CurrentWeather.fromJson(response.data);
       Map<String, dynamic> json = apiResponse.toJson();
 
       Map<String, dynamic> data = apiResponse.current_weather;
+
       double temperature = data['temperature'];
 
-      print('$temperature °C');
-      return (temperature.toString());
+      print('$temperature °C'); // for DEBUG purposes
+      return (temperature.toString()); // .toString() needed?
     } else {
-      print(response.statusCode);
+      print(response.statusCode); // for DEBUG purposes
     }
   }
 }
