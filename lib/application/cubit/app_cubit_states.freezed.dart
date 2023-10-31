@@ -20,9 +20,9 @@ mixin _$AppCubitStates {
   bool get wasReset => throw _privateConstructorUsedError;
   int get counterValue => throw _privateConstructorUsedError;
   String get temperature => throw _privateConstructorUsedError;
-  String get location => throw _privateConstructorUsedError;
+  String get location =>
+      throw _privateConstructorUsedError; // WHY THIS ONE NOT SHOWING LOCATION ?
   String get message => throw _privateConstructorUsedError;
-  String get city => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppCubitStatesCopyWith<AppCubitStates> get copyWith =>
@@ -41,8 +41,7 @@ abstract class $AppCubitStatesCopyWith<$Res> {
       int counterValue,
       String temperature,
       String location,
-      String message,
-      String city});
+      String message});
 }
 
 /// @nodoc
@@ -64,7 +63,6 @@ class _$AppCubitStatesCopyWithImpl<$Res, $Val extends AppCubitStates>
     Object? temperature = null,
     Object? location = null,
     Object? message = null,
-    Object? city = null,
   }) {
     return _then(_value.copyWith(
       wasIncremented: null == wasIncremented
@@ -91,10 +89,6 @@ class _$AppCubitStatesCopyWithImpl<$Res, $Val extends AppCubitStates>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -113,8 +107,7 @@ abstract class _$$AppCubitStatesImplCopyWith<$Res>
       int counterValue,
       String temperature,
       String location,
-      String message,
-      String city});
+      String message});
 }
 
 /// @nodoc
@@ -134,7 +127,6 @@ class __$$AppCubitStatesImplCopyWithImpl<$Res>
     Object? temperature = null,
     Object? location = null,
     Object? message = null,
-    Object? city = null,
   }) {
     return _then(_$AppCubitStatesImpl(
       wasIncremented: null == wasIncremented
@@ -161,10 +153,6 @@ class __$$AppCubitStatesImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -176,10 +164,9 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
       {required this.wasIncremented,
       required this.wasReset,
       required this.counterValue,
-      this.temperature = 'press get_location',
-      this.location = 'press get_location',
-      this.message = 'Have a ☀️ day!',
-      this.city = ''});
+      this.temperature = 'loading data ..',
+      this.location = 'loading data ..',
+      this.message = 'Have a ☀️ day!'});
 
   @override
   final bool wasIncremented;
@@ -193,16 +180,14 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
   @override
   @JsonKey()
   final String location;
+// WHY THIS ONE NOT SHOWING LOCATION ?
   @override
   @JsonKey()
   final String message;
-  @override
-  @JsonKey()
-  final String city;
 
   @override
   String toString() {
-    return 'AppCubitStates(wasIncremented: $wasIncremented, wasReset: $wasReset, counterValue: $counterValue, temperature: $temperature, location: $location, message: $message, city: $city)';
+    return 'AppCubitStates(wasIncremented: $wasIncremented, wasReset: $wasReset, counterValue: $counterValue, temperature: $temperature, location: $location, message: $message)';
   }
 
   @override
@@ -220,13 +205,12 @@ class _$AppCubitStatesImpl implements _AppCubitStates {
                 other.temperature == temperature) &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.city, city) || other.city == city));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, wasIncremented, wasReset,
-      counterValue, temperature, location, message, city);
+      counterValue, temperature, location, message);
 
   @JsonKey(ignore: true)
   @override
@@ -243,8 +227,7 @@ abstract class _AppCubitStates implements AppCubitStates {
       required final int counterValue,
       final String temperature,
       final String location,
-      final String message,
-      final String city}) = _$AppCubitStatesImpl;
+      final String message}) = _$AppCubitStatesImpl;
 
   @override
   bool get wasIncremented;
@@ -256,10 +239,8 @@ abstract class _AppCubitStates implements AppCubitStates {
   String get temperature;
   @override
   String get location;
-  @override
+  @override // WHY THIS ONE NOT SHOWING LOCATION ?
   String get message;
-  @override
-  String get city;
   @override
   @JsonKey(ignore: true)
   _$$AppCubitStatesImplCopyWith<_$AppCubitStatesImpl> get copyWith =>

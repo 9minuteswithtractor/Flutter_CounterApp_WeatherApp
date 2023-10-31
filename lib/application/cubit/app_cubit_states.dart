@@ -12,10 +12,10 @@ class AppCubitStates with _$AppCubitStates {
     required bool wasIncremented,
     required bool wasReset,
     required int counterValue,
-    @Default('press get_location') String temperature,
-    @Default('press get_location') String location,
+    @Default('loading data ..') String temperature,
+    @Default('loading data ..')
+    String location, // WHY THIS ONE NOT SHOWING LOCATION ?
     @Default('Have a ☀️ day!') String message,
-    @Default('') String city,
   }) = _AppCubitStates;
 
   factory AppCubitStates.initial() => const AppCubitStates(

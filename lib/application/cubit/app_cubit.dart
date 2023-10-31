@@ -14,11 +14,10 @@ class CounterCubit extends Cubit<AppCubitStates> {
             wasReset: false,
             // location: LocationProvider().getCurrentLocation().toString() => promise
             location: 'LOCATION',
-            temperature: 'PRESS_GET_LOCATION(yet_unavailable)',
+            temperature: 'WEATHER',
           ),
         ) {
     // TODO: call methods()
-    String place = LocationProvider().getCurrentLocation().toString();
   }
 
   void incrementValue() {

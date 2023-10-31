@@ -17,8 +17,7 @@ class HomePage extends StatelessWidget {
     // this is how we can access cubit /////////////
     // TODO: IS THIS A GOOD PLACE ?????????????????
     final cubit = context.read<CounterCubit>();
-    String location = cubit.state.location;
-    String temperature = cubit.state.temperature;
+
     //TODO: ??????????????????????????????????????
     ////////////////////////////////////////////////
     // String defaultLocationVal = AppCubitStates.initsial().message;
@@ -98,7 +97,7 @@ class HomePage extends StatelessWidget {
                             await cubit.getWeather();
                           },
                           child: const Text(
-                            'Get Location',
+                            'Get Weather',
                             style: TextStyle(color: Colors.blueAccent),
                           ),
                         );
@@ -115,9 +114,10 @@ class HomePage extends StatelessWidget {
                         ),
                         BlocBuilder<CounterCubit, AppCubitStates>(
                             builder: (context, state) {
-                          String locationValue = state.location;
+                          String location = cubit.state.location;
+
                           return Text(
-                            locationValue,
+                            location,
                             style: const TextStyle(
                               fontSize: 22.0,
                               color: Colors.indigo,
@@ -135,9 +135,9 @@ class HomePage extends StatelessWidget {
                         ),
                         BlocBuilder<CounterCubit, AppCubitStates>(
                           builder: (context, state) {
-                            String temperatureValue = state.temperature;
+                            String temperature = cubit.state.temperature;
                             return Text(
-                              temperatureValue,
+                              '$temperature °C',
                               style: const TextStyle(
                                 fontSize: 22.0,
                                 color: Colors.indigo,
